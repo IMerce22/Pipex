@@ -6,7 +6,7 @@
 /*   By: insoares <insoares@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 16:18:46 by insoares          #+#    #+#             */
-/*   Updated: 2024/10/28 11:43:04 by insoares         ###   ########.fr       */
+/*   Updated: 2024/10/28 11:35:32 by insoares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	exit_handler(int n_exit)
 	exit (EXIT_FAILURE);
 }
 
-void	child_process(char **av, char **env, int *p)
+void	child_process(char **av, int *p, char **env)
 {
 	int	open_fd;
 
@@ -89,7 +89,7 @@ int	main(int ac, char **av, char **env)
 			ft_close(p);
 		}
 		else if (pid == 0)
-			child_process(av, env, p);
+			child_process(av, p, env);
 		else
 			ft_child_process_2(av, env, p);
 		waitpid(0, NULL, 0);
